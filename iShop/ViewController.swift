@@ -51,7 +51,7 @@ class ViewController: UIViewController {
     // MARK: - Functions
     
     private func loadTableView(ascending: Bool = true) {
-        if let items = dataManager.loadItems(ascending) {
+        if let items = dataManager.loadItemsWithFilter(ascending: ascending) {
             switch state {
             case SortState.ascending:
                 state = SortState.descending
@@ -101,7 +101,7 @@ extension ViewController: UISearchBarDelegate, UISearchDisplayDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
-        if let items = dataManager.loadItemsWithFilter(filter: searchBar.text!) {
+        if let items = dataManager.loadItemsWithFilter(name: searchBar.text!) {
             self.items = items
             tableView.reloadData()
         }

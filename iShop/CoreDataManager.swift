@@ -48,27 +48,9 @@ class CoreDataManager{
         return item
     }
     
-    func loadItems(_ ascending: Bool = true) -> [Item]? {
+    func loadItems() -> [Item]? {
         
         let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
-        
-        let sortDescriptor = NSSortDescriptor(key: "name", ascending: ascending)
-        
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        
-        // Limit to number of
-        //fetchRequest.fetchLimit = 5
-        
-        // c = case insensitive
-        // d = accentuation insensitive
-        
-        let predicate1 = NSPredicate(format: "name contains[cd] %@", "a")
-        
-        let predicate2 = NSPredicate(format: "name contains[cd] %@", "o")
-        
-        let predicate = NSCompoundPredicate(orPredicateWithSubpredicates: [predicate1, predicate2])
-        
-        fetchRequest.predicate = predicate
         
         do {
             return try context.fetch(fetchRequest)
@@ -77,26 +59,25 @@ class CoreDataManager{
         }
     }
     
-    func loadItemsWithFilter(filter: String) -> [Item]? {
+    func loadItemsWithFilter(name: String = "", ascending: Bool = true, isFavorite: Bool = false) -> [Item]? {
         let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
         
-        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
-        
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: ascending)
         fetchRequest.sortDescriptors = [sortDescriptor]
         
-        // Limit to number of
-        //fetchRequest.fetchLimit = 5
+        var predicates: [NSPredicate] = []
         
-        // c = case insensitive
-        // d = accentuation insensitive
-
-        //let predicate2 = NSPredicate(format: "name contains[cd] %@", "o"
-        //let predicate = NSCompoundPredicate(orPredicateWithSubpredicates: [predicate1, predicate2])
-        
-        if (filter.count > 0) {
-            let predicate1 = NSPredicate(format: "name contains[cd] %@", filter)
-            fetchRequest.predicate = predicate1
+        if (name.count > 0) {
+            let predicate1 = NSPredicate(format: "name contains[cd] %@", name)
+            predicates.append(predicate1)
         }
+        if (isFavorite) {
+            let predicate2 = NSPredicate(format: "isFavorite == %@", NSNumber(value: true))
+            predicates.append(predicate2)
+        }
+        
+        let predicate = NSCompoundPredicate(andPredicateWithSubpredicates: predicates)
+        fetchRequest.predicate = predicate
         
         do {
             return try context.fetch(fetchRequest)
