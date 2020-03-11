@@ -38,7 +38,7 @@ class ViewController: UIViewController {
         
         switch state {
             case SortState.ascending:
-                loadTableView(false)
+                loadTableView(ascending: false)
             case SortState.descending:
                 loadTableView()
         }
@@ -46,7 +46,7 @@ class ViewController: UIViewController {
     
     // MARK: - Functions
     
-    private func loadTableView(_ ascending: Bool = true) {
+    private func loadTableView(ascending: Bool = true) {
         if let items = dataManager.loadItems(ascending) {
             switch state {
                 case SortState.ascending:

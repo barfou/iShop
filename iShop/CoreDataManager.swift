@@ -27,7 +27,7 @@ class CoreDataManager{
     
     func createRandomItems() {
         
-        if loadItems() == [] {
+        if let items = loadItems(), items.count == 0 {
         
             let randomData = ["Veste", "Chaussures", "Pantalon", "Slip"]
             
