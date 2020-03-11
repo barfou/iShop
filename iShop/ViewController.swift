@@ -29,11 +29,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        if let items = dataManager.loadItems() {
-            
-            self.items = items
-            tableView.reloadData()
-        }
+        loadTableView()
     }
     
     // MARK: - Actions
