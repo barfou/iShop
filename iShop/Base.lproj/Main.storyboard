@@ -105,6 +105,9 @@
                                             <subviews>
                                                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="C1c-FR-R59">
                                                     <rect key="frame" x="18" y="42.5" width="378" height="31"/>
+                                                    <connections>
+                                                        <action selector="onValueChange:" destination="uuT-os-8gU" eventType="valueChanged" id="swD-tk-VP6"/>
+                                                    </connections>
                                                 </slider>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Max Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xxN-b3-cxP">
                                                     <rect key="frame" x="20" y="11" width="76" height="21"/>
@@ -280,6 +283,10 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="lblValue" destination="xIi-mh-6sn" id="QDf-t2-JfZ"/>
+                        <outlet property="slider" destination="C1c-FR-R59" id="b8d-aG-Fx2"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="reg-yz-ECj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
