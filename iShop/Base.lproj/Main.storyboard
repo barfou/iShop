@@ -10,7 +10,6 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="iShop" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -19,25 +18,33 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NAc-bh-Xf1">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" text="" id="Qyh-6W-BgF">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="BYZ-38-t0r" id="k3o-go-Jao"/>
+                                    </connections>
+                                </searchBar>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="72" id="o75-WV-62Q">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="72"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="Cell" rowHeight="72" id="o75-WV-62Q">
+                                        <rect key="frame" x="0.0" y="72" width="414" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="o75-WV-62Q" id="RgB-lK-qqu">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="72"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="370" height="72"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="KjI-4m-ArX"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Z9Y-ME-Ida"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="RVk-ar-qxS"/>
                                 </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="NAc-bh-Xf1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="C81-vd-mjM"/>
+                            <constraint firstItem="NAc-bh-Xf1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Sf1-dt-Yht"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="NAc-bh-Xf1" secondAttribute="bottom" id="Tsg-GQ-ek4"/>
                             <constraint firstItem="NAc-bh-Xf1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="lpG-M8-vdf"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NAc-bh-Xf1" secondAttribute="trailing" id="yIy-uA-Gy2"/>
@@ -52,9 +59,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="searchBar" destination="NAc-bh-Xf1" id="4TP-lJ-WgV"/>
                         <outlet property="tableView" destination="NAc-bh-Xf1" id="Ciw-bU-ph9"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="66.666666666666671" y="132.58928571428572"/>
         </scene>

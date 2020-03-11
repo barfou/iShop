@@ -28,7 +28,7 @@ class CoreDataManager{
     func createRandomItems() {
         
         if let items = loadItems(), items.count == 0 {
-        
+            
             let randomData = ["Veste", "Chaussures", "Pantalon", "Slip"]
             
             for name in randomData {
@@ -56,6 +56,48 @@ class CoreDataManager{
         
         fetchRequest.sortDescriptors = [sortDescriptor]
         
+        // Limit to number of
+        //fetchRequest.fetchLimit = 5
+        
+        // c = case insensitive
+        // d = accentuation insensitive
+        
+        let predicate1 = NSPredicate(format: "name contains[cd] %@", "a")
+        
+        let predicate2 = NSPredicate(format: "name contains[cd] %@", "o")
+        
+        let predicate = NSCompoundPredicate(orPredicateWithSubpredicates: [predicate1, predicate2])
+        
+        fetchRequest.predicate = predicate
+        
+        do {
+            return try context.fetch(fetchRequest)
+        } catch {
+            return nil
+        }
+    }
+    
+    func loadItemsWithFilter(filter: String) -> [Item]? {
+        let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
+        
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+        
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        
+        // Limit to number of
+        //fetchRequest.fetchLimit = 5
+        
+        // c = case insensitive
+        // d = accentuation insensitive
+
+        //let predicate2 = NSPredicate(format: "name contains[cd] %@", "o"
+        //let predicate = NSCompoundPredicate(orPredicateWithSubpredicates: [predicate1, predicate2])
+        
+        if (filter.count > 0) {
+            let predicate1 = NSPredicate(format: "name contains[cd] %@", filter)
+            fetchRequest.predicate = predicate1
+        }
+        
         do {
             return try context.fetch(fetchRequest)
         } catch {
@@ -64,20 +106,20 @@ class CoreDataManager{
     }
     
     // MARK: - Core Data stack
-
+    
     lazy var persistentContainer: NSPersistentContainer = {
         /*
          The persistent container for the application. This implementation
          creates and returns a container, having loaded the store for the
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
-        */
+         */
         let container = NSPersistentContainer(name: "iShop")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
                 // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                 
+                
                 /*
                  Typical reasons for an error here include:
                  * The parent directory does not exist, cannot be created, or disallows writing.
@@ -91,9 +133,9 @@ class CoreDataManager{
         })
         return container
     }()
-
+    
     // MARK: - Core Data Saving support
-
+    
     func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {
