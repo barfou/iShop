@@ -14,6 +14,7 @@
 		087E54412418DB5200B4EE74 /* iShop.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 087E543F2418DB5200B4EE74 /* iShop.xcdatamodeld */; };
 		087E54432418DB5300B4EE74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 087E54422418DB5300B4EE74 /* Assets.xcassets */; };
 		087E54462418DB5300B4EE74 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 087E54442418DB5300B4EE74 /* LaunchScreen.storyboard */; };
+		087E54522418EF4C00B4EE74 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087E54512418EF4C00B4EE74 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		087E54422418DB5300B4EE74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		087E54452418DB5300B4EE74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		087E54472418DB5300B4EE74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		087E54512418EF4C00B4EE74 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				087E54442418DB5300B4EE74 /* LaunchScreen.storyboard */,
 				087E54472418DB5300B4EE74 /* Info.plist */,
 				087E543F2418DB5200B4EE74 /* iShop.xcdatamodeld */,
+				087E54512418EF4C00B4EE74 /* CoreDataManager.swift */,
 			);
 			path = iShop;
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 				087E543B2418DB5200B4EE74 /* ViewController.swift in Sources */,
 				087E54412418DB5200B4EE74 /* iShop.xcdatamodeld in Sources */,
 				087E54372418DB5200B4EE74 /* AppDelegate.swift in Sources */,
+				087E54522418EF4C00B4EE74 /* CoreDataManager.swift in Sources */,
 				087E54392418DB5200B4EE74 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
