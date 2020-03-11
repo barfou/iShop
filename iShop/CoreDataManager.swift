@@ -48,11 +48,11 @@ class CoreDataManager{
         return item
     }
     
-    func loadItems() -> [Item]? {
+    func loadItems(_ ascending: Bool = true) -> [Item]? {
         
         let fetchRequest: NSFetchRequest<Item> = Item.fetchRequest()
         
-        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: ascending)
         
         fetchRequest.sortDescriptors = [sortDescriptor]
         

@@ -12,6 +12,12 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    enum SortState {
+        case ascending
+        case descending
+    }
+    var state = SortState.ascending
+    
     var dataManager: CoreDataManager {
         get {
             return CoreDataManager.shared
@@ -30,9 +36,31 @@ class ViewController: UIViewController {
         }
     }
     
-    // MARK
+    // MARK: - Actions
     
     @IBAction func Sort(_ sender: UIBarButtonItem) {
+        
+        switch state {
+            case SortState.ascending:
+                loadTableView(false)
+            case SortState.descending:
+                loadTableView()
+        }
+    }
+    
+    // MARK: - Functions
+    
+    private func loadTableView(_ ascending: Bool = true) {
+        if let items = dataManager.loadItems(ascending) {
+            switch state {
+                case SortState.ascending:
+                        state = SortState.descending
+                case SortState.descending:
+                    state = SortState.ascending
+            }
+            self.items = items
+            tableView.reloadData()
+        }
     }
 }
 
